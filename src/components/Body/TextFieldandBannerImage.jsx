@@ -6,6 +6,7 @@ const Cont = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas: "a b";
+
   @media ${device.mobileS} {
     grid-template-columns: repeat(1, 1fr);
     grid-template-areas:
@@ -38,7 +39,7 @@ const Img = styled.img`
   width: 80%;
 
   -webkit-filter: grayscale(100%);
-  filter: grayscale(60%);
+  filter: grayscale(90%);
 `;
 
 const TextBox = styled.div`
@@ -86,8 +87,6 @@ const ImgField = styled.div`
 `;
 
 export function Body() {
- 
-
   return (
     <>
       <Cont>

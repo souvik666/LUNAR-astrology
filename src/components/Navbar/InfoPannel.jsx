@@ -3,6 +3,7 @@ import { device } from "../../Devices";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import InstagramIcon from "@mui/icons-material/Instagram";
+import { useNavigate } from "react-router-dom";
 
 const Bar = styled.div`
   width: 85%;
@@ -51,13 +52,30 @@ const SocialTabls = styled.p`
   cursor: pointer;
 `;
 
+const Pathresolver = (where, fn) => {
+  return fn(where);
+};
+
 export function InfoBar() {
+  const fly = useNavigate();
   return (
     <>
       <Bar>
         <Cont>
-          <Tabs>Home</Tabs>
-          <Tabs>signs</Tabs>
+          <Tabs
+            onClick={() => {
+              Pathresolver("/", fly);
+            }}
+          >
+            Home
+          </Tabs>
+          <Tabs
+            onClick={() => {
+              Pathresolver("/signs", fly);
+            }}
+          >
+            <mark>signs</mark>
+          </Tabs>
           <Tabs>Blog</Tabs>
           <Tabs>Contact</Tabs>
           <Tabs>About</Tabs>

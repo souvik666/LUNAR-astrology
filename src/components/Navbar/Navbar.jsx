@@ -47,7 +47,7 @@ export function NavBarComponet() {
             </span>
             Email
           </ContactText>
-          <ContactText>abcd@gmail.com</ContactText>
+          <ContactText>abc@gmail.com</ContactText>
         </ContactBox>
 
         <ContactBox>
