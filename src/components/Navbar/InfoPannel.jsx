@@ -20,13 +20,13 @@ const Cont = styled.div`
   justify-content: flex-start;
   font-size: small;
   @media ${device.mobileS} {
-    font-size: 1.7vw;
+    font-size: 2.9vw;
   }
   @media ${device.mobileM} {
-    font-size: 1.7vw;
+    font-size: 2.9vw;
   }
   @media ${device.mobileL} {
-    font-size: 1.7vw;
+    font-size: 2.9vw;
   }
   @media ${device.tablet} {
     font-size: small;
