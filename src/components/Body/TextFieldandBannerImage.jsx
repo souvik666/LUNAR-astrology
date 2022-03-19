@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { device } from "../../Devices";
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
+
 const Cont = styled.div`
   width: 85%;
   margin: auto;
@@ -36,7 +39,7 @@ const ContChild = styled.div`
 `;
 
 const Img = styled.img`
-  width: 80%;
+  width: 90%;
 
   -webkit-filter: grayscale(100%);
   filter: grayscale(90%);
@@ -86,33 +89,57 @@ const ImgField = styled.div`
   }
 `;
 
-export function Body() {
+export function Body(props) {
+  const { heading, signs, descriptions, pic } = props;
+  const imgRef = useRef();
+  useEffect(() => {
+    gsap.from(imgRef.current, {
+      opacity: 0,
+      duration: 1.1,
+      delay: 0.5,
+    });
+
+    return () => {};
+  }, []);
+
   return (
     <>
       <Cont>
         <ContChild>
           <TextBox>
-            <SmallText>About We</SmallText>
+            <SmallText>{!heading ? "About We" : heading}</SmallText>
             <br />
             <br />
             <HeadLin>
-              <mark>LUNAR</mark> IS
+              <mark>{!signs ? "LUNAR" : signs}</mark>
+              {!signs ? " IS" : ""}
             </HeadLin>
-            <HeadLin>WAY OF LIFE</HeadLin>
+            <HeadLin>{!signs ? "WAY OF LIFE" : "Today's Horoscope "}</HeadLin>
             <br />
             <InfoText>
-              Astrology may not give definite answers, but providing meaningful
+              {descriptions
+                ? descriptions
+                : `  Astrology may not give definite answers, but providing meaningful
               explanations of ambiguous or confusing situations can increase an
               individual's sense of control over them, according to a 1998
               study. It can also provide reassurance about the future, bringing
-              people great comfort and reducing their feelings of distress.
+              people great comfort and reducing their feelings of distress.`}
             </InfoText>
             <br />
             <TagLine>Read More</TagLine>
           </TextBox>
         </ContChild>
         <ImgField>
-          <Img src="earth.png"></Img>
+          {/*  earth.png*/}
+          <Img
+            style={pic ? { width: "65%" } : { width: "90%" }}
+            ref={imgRef}
+            src={
+              pic
+                ? pic
+                : "https://us.123rf.com/450wm/croisy/croisy1812/croisy181200008/116796953-triple-lunar-goddess-hecate-ancient-greek-mythology-hand-drawn-black-and-white-isolated-vector-illus.jpg?ver=6"
+            }
+          ></Img>
         </ImgField>
       </Cont>
     </>

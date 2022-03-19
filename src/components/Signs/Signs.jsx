@@ -1,4 +1,6 @@
 import styled from "@emotion/styled";
+import gsap from "gsap";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { device } from "../../Devices";
 import { SignsData } from "../../signs";
@@ -30,6 +32,7 @@ function Zodiaacs(props) {
   function HandelRoutes(whr) {
     return fly("/signs/" + whr);
   }
+
   const { src, keys, sign } = props;
   const Child = styled.img`
     width: 70%;
@@ -47,12 +50,23 @@ function Zodiaacs(props) {
     margin-top: 3%;
   `;
 
+  const signeref = useRef();
+  useEffect(() => {
+    gsap.from(signeref.current, {
+      opacity: 0,
+      duration: 1.1,
+      delay: 0.5,
+    });
+    return () => {};
+  }, []);
+
   let textfacney = sign.split("");
   textfacney[0] = <mark>{textfacney[0]}</mark>;
 
   return (
     <>
       <Cont
+        ref={signeref}
         key={keys}
         onClick={(e) => {
           HandelRoutes(sign);
