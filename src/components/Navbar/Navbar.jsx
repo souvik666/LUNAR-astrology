@@ -2,6 +2,7 @@ import styled from "styled-components";
 import EmailIcon from "@mui/icons-material/Email";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import { InfoBar } from "./InfoPannel";
+import { device } from "../../Devices";
 
 const LogoWithContact = styled.div`
   width: 85%;
@@ -20,6 +21,18 @@ const MyLogoText = styled.p`
 const ContactBox = styled.div`
   float: right;
   margin-left: 2%;
+  @media ${device.mobileS} {
+    display: none;
+  }
+  @media ${device.mobileM} {
+    display: none;
+  }
+  @media ${device.mobileL} {
+    display: none;
+  }
+  @media ${device.tablet} {
+    display: block;
+  }
 `;
 
 const ContactText = styled.p`
